@@ -2,6 +2,7 @@ FROM debian:wheezy
 MAINTAINER daniel@kuecker.net
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV DOMAIN localhost
 
 RUN apt-get update
 RUN apt-get install -y git-core libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev patch python-mysqldb python-setuptools python-subvertpy memcached python-imaging python-pip python-dev subversion mercurial python-svn libpcre3 libpcre3-dev python-ldap
