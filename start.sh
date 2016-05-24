@@ -18,7 +18,7 @@ MEMCACHED="${MEMCACHED:-$( echo "${MEMCACHED_LINKED_NOTCP:-127.0.0.1}" )}"
 DOMAIN="${DOMAIN:localhost}"
 DEBUG="$DEBUG"
 
-sed -i "s/{{DOMAIN}}/${DOMAIN}/" /uwsgi.in
+sed -i "s/{{DOMAIN}}/${DOMAIN}/" /uwsgi.ini
 
 mkdir -p /var/www/
 
