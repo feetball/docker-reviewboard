@@ -18,9 +18,13 @@ MEMCACHED="${MEMCACHED:-$( echo "${MEMCACHED_LINKED_NOTCP:-127.0.0.1}" )}"
 DOMAIN="${DOMAIN:localhost}"
 DEBUG="$DEBUG"
 
+sed -i "s/{{DOMAIN}}/${DOMAIN}/" /uwsgi.in
+
 mkdir -p /var/www/
 
-CONFFILE=/var/www/reviewboard/conf/settings_local.py
+CONFFILE="/var/www/${DOMAIN}/conf/settings_local.py"
+
+sleep 10s   # wait for db to start
 
 if [[ ! -d "/var/www/${DOMAIN}" ]]; then
     rb-site install --noinput \
@@ -40,6 +44,6 @@ if [[ "$DEBUG" ]]; then
     sed -i 's/DEBUG *= *False/DEBUG=True/' "$CONFFILE"
 fi
 
-cat "$CONFFILE"
+cat "${CONFFILE}"
 
 exec uwsgi --ini /uwsgi.ini
