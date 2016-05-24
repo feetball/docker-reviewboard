@@ -22,7 +22,7 @@ sed -i "s/{{DOMAIN}}/${DOMAIN}/" /uwsgi.ini
 
 mkdir -p /var/www/
 
-CONFFILE="/var/www/${DOMAIN}/conf/settings_local.py"
+CONFFILE="/var/www${DOMAIN}/conf/settings_local.py"
 
 sleep 10s   # wait for db to start
 
