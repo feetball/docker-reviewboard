@@ -15,14 +15,13 @@ MYSQL_HOST="${MYSQL_HOST:-$( echo "${MYSQL_PORT_3306_TCP_ADDR:-127.0.0.1}" )}"
 MEMCACHED_LINKED_NOTCP="${MEMCACHED_PORT#tcp://}"
 MEMCACHED="${MEMCACHED:-$( echo "${MEMCACHED_LINKED_NOTCP:-127.0.0.1}" )}"
 
-DOMAIN="${DOMAIN:localhost}"
 DEBUG="$DEBUG"
 
 sed -i "s/{{DOMAIN}}/${DOMAIN}/" /uwsgi.ini
 
 mkdir -p /var/www/
 
-CONFFILE="/var/www${DOMAIN}/conf/settings_local.py"
+CONFFILE="/var/www/${DOMAIN}/conf/settings_local.py"
 
 sleep 10s   # wait for db to start
 
