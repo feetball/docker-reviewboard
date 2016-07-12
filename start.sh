@@ -46,3 +46,5 @@ if [[ "$DEBUG" ]]; then
 fi
 
 cat "${CONFFILE}"
+
+exec uwsgi --ini /uwsgi.ini
