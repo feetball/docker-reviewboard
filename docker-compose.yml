@@ -24,6 +24,7 @@ ui:
   image: feetball/docker-reviewboard
   environment:
     - "ADMIN_PASSWORD=CHANGE_ME"
+    - "ADMIN_EMAIL=ADMIN@EXAMPLE.COM"
     - "DEBUG=true"
     - "DOMAIN=localhost"
     - "MYSQL_HOST=db"
