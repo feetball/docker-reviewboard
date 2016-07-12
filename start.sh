@@ -5,6 +5,8 @@ MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-reviewboard}"
 MYSQL_PASSWORD="${MYSQL_PASSWORD:-reviewboard}"
 MYSQL_DATABASE="${MYSQL_DATABASE:-reviewboard}"
 
+ADMIN_EMAIL="${ADMIN_EMAIL:-admin@example.com}"
+
 # Get these variables either from MYSQLPORT and MYSQLHOST, or from
 # linked "mysql" container.
 MYSQL_PORT="${MYSQL_PORT:-$( echo "${MYSQL_PORT_3306_TCP_PORT:-3306}" )}"
@@ -17,7 +19,7 @@ MEMCACHED="${MEMCACHED:-$( echo "${MEMCACHED_LINKED_NOTCP:-127.0.0.1}" )}"
 
 DEBUG="$DEBUG"
 
-sed -i "s/{{DOMAIN}}/${DOMAIN}/" /uwsgi.ini
+#sed -i "s/{{DOMAIN}}/${DOMAIN}/" /uwsgi.ini
 
 mkdir -p /var/www/
 
@@ -35,8 +37,8 @@ if [[ ! -d "/var/www/${DOMAIN}" ]]; then
         --db-user="${MYSQL_USER}" \
         --db-pass="${MYSQL_PASSWORD}" \
         --cache-type=memcached --cache-info="$MEMCACHED" \
-        --web-server-type=lighttpd --web-server-port=8000 \
-        --admin-user=admin --admin-password="${ADMIN_PASSWORD}" --admin-email=admin@example.com \
+        --web-server-type=apache --web-server-port=8000 \
+        --admin-user=admin --admin-password="${ADMIN_PASSWORD}" --admin-email="${ADMIN_EMAIL}" \
         "/var/www/${DOMAIN}"
 fi
 if [[ "$DEBUG" ]]; then
@@ -44,5 +46,3 @@ if [[ "$DEBUG" ]]; then
 fi
 
 cat "${CONFFILE}"
-
-exec uwsgi --ini /uwsgi.ini
