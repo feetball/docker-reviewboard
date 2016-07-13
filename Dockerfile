@@ -4,7 +4,11 @@ MAINTAINER daniel@kuecker.net
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y git-core libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev patch python-mysqldb python-setuptools python-subvertpy memcached python-imaging python-pip python-dev subversion mercurial python-svn libpcre3 libpcre3-dev python-ldap
+RUN apt-get install -y git-core libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev patch python-mysqldb python-setuptools 
+RUN apt-get install -y python-subvertpy memcached python-imaging python-pip python-dev subversion mercurial python-svn libpcre3 
+RUN apt-get install -y libpcre3-dev python-ldap wget sudo libc6
+
+
 
 # Since Reviewboard 2.5 it has a dependency for Pillow.
 # Since Pillow 3.0.0 installation fails if there is no libjpeg library [RFC: Require libjpeg and zlib by default](https://github.com/python-pillow/Pillow/issues/1412)
