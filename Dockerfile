@@ -10,6 +10,8 @@ RUN apt-get install -y python-subvertpy memcached python-imaging python-pip pyth
 RUN apt-get install -y libpcre3-dev python-ldap libc6 libtiff5-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev
 RUN apt-get install -y python-tk libffi-dev nano wget sudo libjpeg62-turbo-dev libssl-dev
 
+RUN pip install pyasn1 --upgrade
+
 RUN easy_install reviewboard
 
 RUN pip install -U uwsgi
