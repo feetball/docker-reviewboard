@@ -9,7 +9,7 @@ RUN apt-get install -y python-subvertpy memcached python-imaging python-pip pyth
 RUN apt-get install -y libpcre3-dev python-ldap libc6 libtiff5-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev
 RUN apt-get install -y python-tk libffi-dev nano wget sudo
 
-RUN apt-get -t testing install libjpeg8 libjpeg8-dev libjpeg62-dev
+#RUN apt-get -t testing install libjpeg8 libjpeg8-dev libjpeg62-dev
 
 
 RUN easy_install reviewboard
