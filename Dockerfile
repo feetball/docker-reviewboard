@@ -1,4 +1,5 @@
-FROM debian:jessie
+FROM debian:wheezy
+#FROM debian:jessie
 MAINTAINER daniel@kuecker.net
 
 ENV DEBIAN_FRONTEND noninteractive
